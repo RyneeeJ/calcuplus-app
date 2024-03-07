@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Calcu+ is an easy to use minimalist calculator app with built-in currency and temperature converter."
+    />
+    <title>Calcu+</title>
+
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" href="./images/favicon.png" />
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style/lightmode.css" />
+
+    <script defer type="module" src="./script/controller.js"></script>
+  </head>
+  <body>
+    <main>
+      <article class="container">
+        <header class="header">
+          <button
+            class="btn--brightness-mode"
+            aria-label="button containing sun and moon icons"
+          >
+            <div class="brightness-mode-container">
+              <i
+                class="ph-bold ph-sun brightness-icon brightness-icon--active"
+              ></i>
+              <i class="ph-bold ph-moon brightness-icon"></i>
+            </div>
+          </button>
+          <button class="btn--menu" aria-label="button containing menu icon">
+            <i class="ph ph-dots-three-outline menu-icon btn--menu-open"></i>
+            <i class="ph ph-x-circle menu-icon btn--menu-close"></i>
+          </button>
+
+          <!-- MENU WINDOW OVERLAY -->
+          <nav class="menu-window-container">
+            <div class="overlay">&nbsp;</div>
+            <div class="menu-window">
+              <ul class="calc-mode-list">
+                <li>
+                  <a
+                    class="calc-mode-link current-mode-active"
+                    href="#"
+                    data-display-num="0"
+                    ><i class="ph ph-calculator calc-modes-icon"></i> Standard
+                    Calculator</a
+                  >
+                </li>
+                <li>
+                  <a class="calc-mode-link" href="#" data-display-num="1">
+                    <i class="ph ph-thermometer calc-modes-icon"></i>
+                    Temperature Conversion</a
+                  >
+                </li>
+                <!-- <li>
+                  <a class="calc-mode-link" href="#"
+                    ><i class="ph ph-person calc-modes-icon"></i> BMI
+                    Calculator</a
+                  >
+                </li> -->
+                <li>
+                  <a class="calc-mode-link" href="#" data-display-num="2"
+                    ><i class="ph ph-currency-dollar calc-modes-icon"></i>
+                    Currency Exchange</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+
+        <div class="display">
+          <div class="display--secondary-container">
+            <div class="display--secondary"></div>
+          </div>
+          <div class="display--main-container">
+            <div class="display--main"></div>
+          </div>
+        </div>
+
+        <!-- STANDARD CALCULATOR -->
+        <div class="keypad keypad-standard-container">
+          <!-- <div class="keypad-standard-grid"> -->
+          <button class="btn--keypad-special" data-clear-all>AC</button>
+          <button class="btn--keypad-special" data-negate-sign>&pm;</button>
+          <button class="btn--keypad-special" data-input=" / " data-operator>
+            &div;
+          </button>
+          <button class="btn--keypad-special" data-input=" * " data-operator>
+            &times;
+          </button>
+          <button class="btn--keypad-normal" data-input="7">7</button>
+          <button class="btn--keypad-normal" data-input="8">8</button>
+          <button class="btn--keypad-normal" data-input="9">9</button>
+          <button class="btn--keypad-special" data-input=" - " data-operator>
+            &minus;
+          </button>
+          <button class="btn--keypad-normal" data-input="4">4</button>
+          <button class="btn--keypad-normal" data-input="5">5</button>
+          <button class="btn--keypad-normal" data-input="6">6</button>
+          <button class="btn--keypad-special" data-input=" + " data-operator>
+            &plus;
+          </button>
+          <button class="btn--keypad-normal" data-input="1">1</button>
+          <button class="btn--keypad-normal" data-input="2">2</button>
+          <button class="btn--keypad-normal" data-input="3">3</button>
+          <button
+            class="btn--keypad-special btn--equals-sign"
+            data-equals=" = "
+          >
+            &equals;
+          </button>
+          <button class="btn--keypad-normal" data-input=".">&period;</button>
+          <button class="btn--keypad-normal" data-input="0">0</button>
+          <button
+            class="btn--keypad-normal"
+            aria-label="button containing backspace icon"
+            data-backspace
+          >
+            <i class="ph ph-backspace btn--backspace"></i>
+          </button>
+          <!-- </div> -->
+        </div>
+
+        <!-- TEMPERATURE CONVERTER -->
+        <div class="keypad keypad-temp-container hidden">
+          <form class="conversion-form" id="form--temperature">
+            <div>
+              <label class="from-to-label" for="temp-from">From:</label>
+              <select class="conversion-select" id="temp-from" required>
+                <option value="">Choose one</option>
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+              </select>
+            </div>
+            <div>
+              <label class="from-to-label" for="temp-to">To:</label>
+              <select class="conversion-select" id="temp-to" required>
+                <option value="">Choose one</option>
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+              </select>
+            </div>
+
+            <label for="initial-temp-value">Input value:</label>
+            <input
+              class="conversion-input"
+              id="initial-temp-value"
+              type="number"
+              placeholder="Temperature"
+              required
+            />
+
+            <button class="btn--convert btn--convert-temp">convert</button>
+            <button class="btn--reset btn--reset-temp">reset</button>
+          </form>
+        </div>
+
+        <!-- CURRENCY EXCHANGE CONVERTER -->
+        <div class="keypad keypad-currency-container hidden">
+          <header class="currency-header">
+            Enter <strong>three-letter</strong> currency code below
+          </header>
+          <form class="conversion-form" id="form--currency">
+            <div>
+              <label class="from-to-label" for="cur-from">From:</label>
+              <input
+                class="conversion-input"
+                id="cur-from"
+                type="text"
+                placeholder="e.g. USD"
+                required
+              />
+            </div>
+            <div>
+              <label class="from-to-label" for="cur-to">To:</label>
+              <input
+                class="conversion-input"
+                id="cur-to"
+                type="text"
+                placeholder="e.g. PHP"
+                required
+              />
+            </div>
+
+            <label for="initial-cur-value">Enter amount here:</label>
+            <input
+              class="conversion-input"
+              id="initial-cur-value"
+              type="number"
+              placeholder="Amount"
+              required
+            />
+
+            <button class="btn--convert btn--convert-cur">convert</button>
+            <button class="btn--reset btn--reset-cur">reset</button>
+          </form>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
