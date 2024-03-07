@@ -139,5 +139,3 @@ const initCurr = function () {
 };
 
 initCurr();
-
-console.log("hello");

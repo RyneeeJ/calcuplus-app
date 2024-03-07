@@ -302,6 +302,8 @@ strong {
   border-radius: 0.4rem;
   width: 100%;
   font-size: inherit;
+  border: 1px solid var(--dark-primary-color);
+  color: inherit;
 }
 .conversion-input {
   width: 100%;
@@ -329,6 +331,7 @@ strong {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
+  border: 2px solid var(--dark-primary-color);
 }
 .btn--convert {
   background-color: var(--dark-primary-color);
@@ -337,20 +340,25 @@ strong {
 
 .btn--reset {
   background-color: inherit;
+  color: inherit;
 }
+
 .btn--convert:hover {
+  -webkit-transform: translateY(-0.5rem);
   transform: translateY(-0.5rem);
   background-color: #3d3e3e;
   box-shadow: 4px 4px 10px #ababab;
 }
 
 .btn--reset:hover {
+  -webkit-transform: translateY(-0.5rem);
   transform: translateY(-0.5rem);
   box-shadow: 4px 4px 10px #ababab;
 }
 
 .btn--convert:active,
 .btn--reset:active {
+  -webkit-transform: translateY(0);
   transform: translateY(0);
 }
 
