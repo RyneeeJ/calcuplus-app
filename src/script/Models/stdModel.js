@@ -2,7 +2,6 @@ import { DEFAULT_DISPLAY_VALUE } from "../config.js";
 
 export const state = {
   calculation: DEFAULT_DISPLAY_VALUE,
-  // result: "",
   history: "",
   symbols: ["+", "-", ["*", "/"], "."],
   // prettier-ignore
@@ -29,7 +28,6 @@ export const storeInputData = function (input) {
   if (input !== "." && state.calculation === DEFAULT_DISPLAY_VALUE)
     state.calculation = "";
 
-  // Add the input into the calculation
   state.calculation += input;
 };
 

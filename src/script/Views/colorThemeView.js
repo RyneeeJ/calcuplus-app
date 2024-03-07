@@ -25,7 +25,6 @@ class ColorThemeView {
   }
 
   listenForToggleBrightness() {
-    // Toggle/Switch brightness mode
     this.#brightnessBtn.addEventListener("click", () => {
       this.#toggleCssClass(this.#brightnessIcons, "brightness-icon--active");
 

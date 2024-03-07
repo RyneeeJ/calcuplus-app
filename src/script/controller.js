@@ -12,8 +12,6 @@ import temperatureView from "./Views/temperatureView.js";
 import currencyView from "./Views/currencyView.js";
 import menuView from "./Views/menuView.js";
 
-// https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD
-
 ////////////////////////////////////////
 // DEFAULT / GENERAL SETTINGS
 ////////////////////////////////////////
@@ -43,18 +41,15 @@ defaultInit();
 ////////////////////////////////////////
 
 const controlInputData = function (input) {
+  // Avoid duplicate symbols and 0s at the beginning
   if (stdModel.hasDuplicateSymbolsAndOctal(input)) return;
-  // store the data in the model
 
   stdModel.storeInputData(input);
   standardCalcView.renderResult(stdModel.state.calculation);
 };
 
 const controlDisplayResult = function () {
-  // Display 0 if enter is pressed and no data input yet
-  // Calculate math expression
   const result = stdModel.calculateInput();
-  // Display results
   standardCalcView.renderLastData(stdModel.state.history);
   standardCalcView.renderResult(result);
 };
@@ -66,7 +61,6 @@ const controlClearData = function () {
 
 const controlRemoveLastInput = function () {
   stdModel.removeLastCharacter();
-
   standardCalcView.renderResult(stdModel.state.calculation);
 };
 
